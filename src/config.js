@@ -217,6 +217,8 @@ c3_chart_internal_fn.getDefaultConfig = function () {
             left: 0
         },
         title_position: 'top-center',
+        // view zoom
+        view_zoom_fn: function () { return 1; }
     };
 
     Object.keys(this.additionalConfig).forEach(function (key) {
