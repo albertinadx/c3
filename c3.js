@@ -1205,7 +1205,9 @@
             },
             tooltip_init_show: false,
             tooltip_init_x: 0,
-            tooltip_init_position: {top: '0px', left: '50px'}
+            tooltip_init_position: {top: '0px', left: '50px'},
+            // view zoom
+            view_zoom_fn: function () { return 1; }
         };
 
         Object.keys(this.additionalConfig).forEach(function (key) {
@@ -2629,7 +2631,9 @@
         return v;
     };
     c3_chart_internal_fn.getParentWidth = function () {
-        return this.getParentRectValue('width');
+        var $$ = this, config = $$.config,
+            zoom = config.view_zoom_fn();
+        return (this.getParentRectValue('width') / zoom);
     };
     c3_chart_internal_fn.getParentHeight = function () {
         var h = this.selectChart.style('height');
