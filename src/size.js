@@ -61,7 +61,9 @@ c3_chart_internal_fn.getParentRectValue = function (key) {
     return v;
 };
 c3_chart_internal_fn.getParentWidth = function () {
-    return this.getParentRectValue('width');
+    var $$ = this, config = $$.config,
+        zoom = config.view_zoom_fn();
+    return (this.getParentRectValue('width') / zoom);
 };
 c3_chart_internal_fn.getParentHeight = function () {
     var h = this.selectChart.style('height');
